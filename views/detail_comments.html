@@ -1,0 +1,62 @@
+<!--<% for (var i = 0; i < comments.length;i++) { -%>-->
+<!--<div class="comments__media">-->
+
+<!--<div class="media-middle">-->
+<!--<i class="media-object" style="background-image: url('/img/content/comment.png')"></i>-->
+<!--<div class="comm_info">-->
+<!--<h4 class="media-heading"><%= comments[i].from %></h4>-->
+<!--<span class="time">today, 12:30</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<p class="media-body"><%= comments[i].content %></p>-->
+<!--</div>-->
+<!--<% } -%>-->
+
+
+
+
+<div class="form-group">
+    <label for="inputcategory" class="col-sm-2 control-lable text-right">选择分类</label>
+    <div class="col-sm-10">
+        <% if (movie._id) { -%>
+        <select name="movie[category]" class="form-control" id="inputcategory">
+            <% for (var i = 0; i < categories.length; i++) { -%>
+            <option value="<%= categories[i]._id%>" selected="<%= categories[i]._id.toString() == movie.category.toString() %>"><%= categories[i].name %></option>
+            <% } -%>
+            <!-- 这个留空代表,用户没有选择已经定义好的分类 -->
+            <option value=""></option>
+        </select>
+        <!-- 选中分类的id等于这一步更新电影的category -->
+        <% } else { -%>
+        <select name="movie[category]" class="form-control">
+            <!-- 这个留空代表,用户没有选择已经定义好的分类 -->
+            <option value=""></option>
+            <% for (var i = 0; i < categories.length; i++) { -%>
+            <option value="<%= categories[i]._id%>"><%= categories[i].name %></option>
+            <% } -%>
+
+        </select>
+        <% } -%>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="inputcategory" class="col-sm-2 control-lable text-right">选择分类</label>
+        <div class="col-sm-10">
+
+            <select name="movie[category]" class="form-control" id="inputcategory" form="adminForm">
+                <% for (var i = 0; i < categories.length; i++) { -%>
+                <% if (movie._id) { -%>
+                <option value="<%= categories[i]._id%>" name="movie[category]" selected="<%= categories[i]._id.toString() == movie.category.toString() %>">
+                    <%= categories[i].name %>
+                </option>
+                <% } else { -%>
+                <option value="<%= categories[i]._id%>" name="movie[category]"><%= categories[i].name %></option>
+                <% } -%>
+                <option value=""></option>
+            </select>
+            <!-- 选中分类的id等于这一步更新电影的category -->
+
+        </div>
+    </div>

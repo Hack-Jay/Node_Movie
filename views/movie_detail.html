@@ -1,0 +1,81 @@
+<%- include('comments/head.html') %>
+                <!-- END header -->
+                <!-- content-->
+                <!-- title -->
+                <div class="wrap wrap_white">
+                    <div class="container title">
+                        <h1 class="title__h1 underscore">Economy</h1>
+                    </div>
+                </div>
+                <!-- END title -->
+               
+                   <div class="wrap wrap_gray pt20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="wrap-thumbnail">
+                                <div class="thumbnail">
+                                    <div class="container">
+                                          <div class="row">
+                                            <div class="col-md-7">
+                                              <embed src="<%= movie.flash%>" allowFullScreen="true",
+                                              quality="high" width="720" height="600" type="application/x-shockwave-flash">
+                                            </div>
+                                            <div class="col-md-5">
+                                              <dl class="dl-horizontal">
+                                                <dt>电影名字</dt>
+                                                <dd><%= movie.title %></dd>
+                                                <dt>导演</dt>
+                                                <dd><%= movie.doctor %></dd>
+                                                <dt>国家</dt>
+                                                <dd><%= movie.country %></dd>
+                                                <dt>语言</dt>
+                                                <dd><%= movie.language %></dd>
+                                                <dt>上映年份</dt>
+                                                <dd><%= movie.year %></dd>
+                                                <dt>简介</dt>
+                                                <dd><%= movie.summary %></dd>
+                                              </dl>
+                                            </div>
+                                          </div>
+                                        <!--评论-->
+                                        <div class="col-sm-9 col-md-9 col-lg-10 comments">
+                                            <p class="comments__title">Comments</p>
+                                            <% for (var i = 0; i < comments.length;i++) { -%>
+                                            <div class="comments__media">
+
+                                            <div class="media-middle">
+                                            <i class="media-object" style="background-image: url('/img/content/comment.png')"></i>
+                                            <div class="comm_info">
+                                            <h4 class="media-heading"><%= comments[i].from.name %></h4>
+                                            <span class="time">today, 12:30</span>
+                                            </div>
+                                            </div>
+                                            <p class="media-body"><%= comments[i].content %></p>
+                                            </div>
+                                            <% } -%>
+
+                                            <div class="comments__form">
+                                                <form action="/admin/comment" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="comment[movie]"  value="<%= movie._id %>">
+                                                        <input type="hidden" name="comment[from]"  value="<%= user._id %>">
+                                                        <textarea name="comment[content]" id="input" class="form-control" rows="7" required="required"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-comment">send</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+               
+                <!-- END content-->
+            </div>
+            <!-- Footer -->
+<%- include('comments/foot.html') %>

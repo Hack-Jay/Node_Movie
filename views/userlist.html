@@ -1,0 +1,61 @@
+<%- include('comments/head.html') %>
+<script type="text/javascript" src='/js/jquery.min.js'></script>
+<!-- END header -->
+<!-- content-->
+<!-- title -->
+<div class="wrap wrap_white">
+    <div class="container title">
+        <h1 class="title__h1 underscore"><%= title %></h1>
+    </div>
+</div>
+<!-- END title -->
+
+<div class="wrap wrap_gray pt20">
+    <div class="container">
+        <div class="row">
+            <div class="wrap-thumbnail">
+                <div class="thumbnail">
+                    <div class="container">
+                        <div class="row">
+                            <table class="table table-hover table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>用户名</th>
+                                    <th>时间</th>
+                                    <th>查看</th>
+                                    <th>更新</th>
+                                    <th>删除</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% for (var i = 0; i < users.length; i++) { -%>
+                                <tr class="item-id-<%= users[i].id %>">
+                                    <td><%= users[i].name %></td>
+                                    <td><%= users[i].meta.updateAt%></td>
+                                    <td>
+                                        <a target="_blank" href="../movie/<%= users[i].id%>">查看</a>
+                                    </td>
+                                    <td>
+                                        <a target="_blank" href="/admin/update/<%= users[i].id%>">修改</a>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger del" type="button"
+                                                data-id="<%=users[i].id%>">删除</button>
+                                    </td>
+                                </tr>
+                                <% } -%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src='/js/admin.js'></script>
+<!-- END content-->
+</div>
+<!-- Footer -->
+<%- include('comments/foot.html') %>

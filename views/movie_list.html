@@ -1,0 +1,67 @@
+<%- include('comments/head.html') %>
+<script type="text/javascript" src='/js/jquery.min.js'></script>
+                <!-- END header -->
+                <!-- content-->
+                <!-- title -->
+                <div class="wrap wrap_white">
+                    <div class="container title">
+                        <h1 class="title__h1 underscore"><%= title %></h1>
+                    </div>
+                </div>
+                <!-- END title -->
+               
+                   <div class="wrap wrap_gray pt20">
+                    <div class="container">
+                        <div class="row">
+                            <div class="wrap-thumbnail">
+                                <div class="thumbnail">
+                                    <div class="container">
+                                          <div class="row">
+                                            <table class="table table-hover table-border">
+                                                <thead>
+                                                    <th>电影名字</th>
+                                                    <th>导演</th>
+                                                    <th>国家</th>
+                                                    <th>上映年份</th>
+                                                  <!--   <th>录入时间</th> -->
+                                                    <th>pv</th>
+                                                    <th>查看</th>
+                                                    <th>更新</th>
+                                                    <th>删除</th>
+                                                </thead>
+                                                <tbody>
+          <% for (var i = 0; i < movies.length; i++) { -%>
+            <tr class="item-id-<%= movies[i].id %>">
+              <td><%= movies[i].title %></td>
+              <td><%= movies[i].doctor %></td>
+              <td><%= movies[i].country %></td>
+              <td><%= movies[i].year %></td>
+              <td><%= movies[i].pv %> </td>
+              <td>
+                <a href="/movie/<%= movies[i].id%>">查看</a>
+              </td>
+              <td>
+                <a target="_blank" href="/admin/update/<%= movies[i].id%>">修改</a>
+              </td>
+              <td>
+                  <button class="btn btn-danger del" type="button"
+                          data-id="<%=movies[i].id%>">删除</button>
+              </td>
+              </td>
+            </tr>
+          <% } -%>
+        </tbody>
+                                            </table>
+                                          </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <script type="text/javascript" src='/js/admin.js'></script>
+                <!-- END content-->
+            </div>
+            <!-- Footer -->
+<%- include('comments/foot.html') %>

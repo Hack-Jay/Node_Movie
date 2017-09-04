@@ -1,0 +1,76 @@
+<%- include('comments/head.html') %>
+<!-- header slider -->
+
+<!-- END header slider -->
+<!-- top news-->
+<style>
+    @media (max-width: 692px)
+    {
+        img{
+            height: 300px;
+        }
+    }
+</style>
+<% for(var i=0;i<categories.length;i++) { -%>
+<section>
+    <!-- top news -->
+    <!-- title -->
+
+    <div class="wrap wrap_white">
+        <div class="container title">
+            <h1 class="title__h1 underscore"><%= categories[i].name %></h1>
+        </div>
+
+    </div>
+    <!-- END title -->
+
+    <div class="wrap wrap_gray pt20">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 projects">
+                <% if(categories[i].movies && categories[i].movies.length >0) { -%>
+                    <% for(var j=0 ;j < categories[i].movies.length ;j++)   {-%>
+                    <div class="col-md-3">
+                        <div class="thumbnail thumbnail_small">
+                            <a href="/movie/<%= categories[i].movies[j]._id %>" class="thumbnail__link">
+                                <img src=" <%= categories[i].movies[j].poster %>" style="height:253px ;width:290px"  alt="<%= categories[i].movies[j].title %>">
+                            </a>
+                            <div class="caption thumbnail__caption">
+                                <div class="news caption__news">
+                                    <i class="icon-play"></i>
+                                    <p class="news__category yellow-line"><%= categories[i].movies[j].title %></p>
+                                    <a href="/movie/<%= categories[i].movies[j]._id%>" class="news__link">
+                                        <p class="news__text" style="height:150px;overflow: hidden"><%= categories[i].movies[j].summary%></p>
+                                    </a>
+                                </div>
+                                <div class="posted">
+                                    <span class="posted__date">today, 12:37</span>
+                                    <ul class="posted__icon">
+                                        <li>
+                                                <span>
+                                                <i class="icon-comment-empty"></i>20
+                                            </span>
+                                        </li>
+                                        <li>
+                                                <span>
+                                                <i class="icon-eye"></i>1.2k
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } -%>
+                     <% } -%>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- /container-->
+</section>
+<% } -%>
+<!-- /top news -->
+<%- include('comments/foot.html') %>
