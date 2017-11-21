@@ -1,6 +1,6 @@
 # Node_Movie
 for nodejs
-#安装模块 : npm install 
+##安装模块 : npm install 
 #运行 : node index
 #技术栈: Node + Express + MongoDB 
 
