@@ -6,12 +6,12 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(session);
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 5000;
 var ejs = require('ejs');
 
 var app = express();
-//var dbUrl = 'mongodb://localhost/blogtest';
-var dbUrl = 'mongodb://root:123456@ds151973.mlab.com:51973/node_test'
+var dbUrl = 'mongodb://localhost/blogtest';
+//var dbUrl = 'mongodb://root:123456@ds151973.mlab.com:51973/node_test'
 
 mongoose.connect(dbUrl);
 console.log('Connect Suceess!');
